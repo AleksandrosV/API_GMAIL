@@ -4,7 +4,7 @@ require 'spec_helper'
 require_relative '../shared_context/api_spec_helper'
 
 RSpec.describe 'Drafts' do
-  it 'Verifies creating draft.' do
+  xit 'Verifies creating draft.' do
     @mail.from =     'testapiruby@gmail.com'
     @mail.to =       'testapiruby@gmail.com'
     @mail.subject =  'Draft test'

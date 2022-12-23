@@ -11,7 +11,7 @@ RSpec.describe 'Labels' do
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  it 'Verifies labels list.' do
+  xit 'Verifies labels list.' do
     @api.get('labels')
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)

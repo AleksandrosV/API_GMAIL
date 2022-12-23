@@ -4,7 +4,7 @@ require 'spec_helper'
 require_relative '../shared_context/api_spec_helper'
 
 RSpec.describe 'Sending Message' do
-  xit 'Verifies message can be send.' do
+  it 'Verifies message can be send.' do
     @mail.from =     'testapiruby@gmail.com'
     @mail.to =       'testapiruby@gmail.com'
     @mail.subject =  'Api email test'
@@ -17,7 +17,7 @@ RSpec.describe 'Sending Message' do
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  it "Verifies wrong email credentials message can't be send." do
+  xit "Verifies wrong email credentials message can't be send." do
     @mail.from =     'testapiruby@gmail.com'
     @mail.to =       'testapirubygmail.com'
     @mail.subject =  'Api email test'
