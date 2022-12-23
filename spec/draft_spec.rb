@@ -4,7 +4,8 @@ require 'spec_helper'
 require_relative '../shared_context/api_spec_helper'
 
 RSpec.describe 'Drafts' do
-  xit 'Verifies creating draft.' do
+  include ApiSpecHelper
+  it 'Verifies creating draft.' do
     @mail.from =     'testapiruby@gmail.com'
     @mail.to =       'testapiruby@gmail.com'
     @mail.subject =  'Draft test'
@@ -24,14 +25,16 @@ RSpec.describe 'Drafts' do
   end
 
   xit 'Verifies draft info by ID.' do
-    @api.get('drafts/r-3174054064523648512')
+    id = sample_draft_id
+    @api.get("drafts/#{id}")
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
   xit 'Verifies deleting draft by ID.' do
-    @api.delete('drafts/r-3159211704065235853')
+    id = sample_draft_id
+    @api.delete("drafts/#{id}")
     expect(@api.status).to eq(ApiSpecHelper::NO_CONTENT_SUCCESS)
     expect(@api.code).to eq(ApiSpecHelper::NO_CONTENT_SUCCESS)
     expect(@api.message).to eq(ApiSpecHelper::NO_CONTENT)

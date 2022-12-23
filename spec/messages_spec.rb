@@ -18,7 +18,7 @@ RSpec.describe 'Messages' do
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  xit 'Verifies modify message ny ID.' do
+  it 'Verifies modify message ny ID.' do
     @api.post('messages/1852ad9c18397ad6/modify', { "removeLabelIds": ['IMPORTANT'] })
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)

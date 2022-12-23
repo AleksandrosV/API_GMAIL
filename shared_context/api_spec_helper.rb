@@ -7,4 +7,9 @@ module ApiSpecHelper
   SUCCESS = 'OK'
   BAD_REQUEST = 'Bad Request'
   NO_CONTENT = 'No Content'
+
+  def sample_draft_id
+    @api.get('drafts')
+    @api.body["drafts"].sample["id"]
+  end
 end

@@ -6,6 +6,7 @@ require 'json'
 require 'yaml'
 require 'mail'
 require 'base64'
+require 'pry'
 
 ClientApi.configure do |config|
   env_data = YAML.load_file('config/env.yml')
