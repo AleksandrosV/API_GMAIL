@@ -9,7 +9,6 @@ RSpec.describe 'Sending Message' do
     @mail.to =       'testapiruby@gmail.com'
     @mail.subject =  'Api email test'
     @mail.body =     'Hello Alex, This is a test.'
-    @mail.add_file   '/Users/vuros/Documents/photo/1.jpg'
     raw = Base64.urlsafe_encode64 @mail.to_s
     @api.post('messages/send', { 'raw': raw })
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
@@ -17,7 +16,7 @@ RSpec.describe 'Sending Message' do
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  xit "Verifies wrong email credentials message can't be send." do
+  it "Verifies wrong email credentials message can't be send." do
     @mail.from =     'testapiruby@gmail.com'
     @mail.to =       'testapirubygmail.com'
     @mail.subject =  'Api email test'

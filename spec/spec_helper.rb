@@ -7,6 +7,12 @@ require 'yaml'
 require 'mail'
 require 'base64'
 require 'pry'
+require 'simplecov'
+SimpleCov.start do
+  track_files '/spec/*.rb'
+end
+SimpleCov.add_filter ['shared_context']
+
 
 ClientApi.configure do |config|
   env_data = YAML.load_file('config/env.yml')

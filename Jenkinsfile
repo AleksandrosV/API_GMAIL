@@ -4,9 +4,19 @@ pipeline {
   stages {
     stage ('Test') {
       steps {
-        sh 'bundle update --bundler'
+        sh 'bundle install'
         
-        sh 'bundle exec rake all'
+        sh 'bundle exec rake spec'
+
+        publishHTML (target : [
+          allowMissing: false,
+          alwaysLinkToLastBuild: true,
+          keepAll: true,
+          reportDir: 'reports',
+          reportFiles: 'rspec_results.html',
+          reportName: 'HTML Report',
+          reportTitles: '',
+          useWrapperFileDirectly: true])
       }
     }
   }

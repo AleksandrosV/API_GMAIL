@@ -17,14 +17,14 @@ RSpec.describe 'Drafts' do
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  xit 'Verifies drafts list.' do
+  it 'Verifies drafts list.' do
     @api.get('drafts')
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  xit 'Verifies draft info by ID.' do
+  it 'Verifies draft info by ID.' do
     id = sample_draft_id
     @api.get("drafts/#{id}")
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
@@ -32,7 +32,7 @@ RSpec.describe 'Drafts' do
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  xit 'Verifies deleting draft by ID.' do
+  it 'Verifies deleting draft by ID.' do
     id = sample_draft_id
     @api.delete("drafts/#{id}")
     expect(@api.status).to eq(ApiSpecHelper::NO_CONTENT_SUCCESS)

@@ -56,8 +56,17 @@ Style/HashSyntax:
 Style/StringConcatenation:
   Enabled: false
 
+Style/RedundantInterpolation:
+  Enabled: false
+
+Style/NegatedIf:
+  Enabled: false
+
+Style/WordArray:
+  Enabled: false
+
 Metrics/LineLength:
-  Max: 150
+  Max: 250
 
 Metrics/ClassLength:
-  Max: 200
+  Max: 250

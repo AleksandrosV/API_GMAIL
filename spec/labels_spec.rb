@@ -1,46 +1,55 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require 'securerandom'
 require_relative '../shared_context/api_spec_helper'
 
 RSpec.describe 'Labels' do
-  xit 'Verifies creating label.' do
-    @api.post('labels', { "labelListVisibility": 'labelShow', "messageListVisibility": 'show', "name": 'TestLabel3' })
+  include ApiSpecHelper
+  it 'Verifies creating label.' do
+    random_string = SecureRandom.hex
+    @api.post('labels', { "labelListVisibility": 'labelShow', "messageListVisibility": 'show', "name": "#{random_string}" })
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  xit 'Verifies labels list.' do
+  it 'Verifies labels list.' do
     @api.get('labels')
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  xit 'Verifies label info by ID.' do
-    @api.get('labels/CHAT')
+  it 'Verifies label info by ID.' do
+    id = sample_label_id
+    @api.get("labels/#{id}")
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  xit 'Verifies deleting label by ID.' do
-    @api.delete('labels/Label_6')
+  it 'Verifies deleting label by ID.' do
+    id = sample_label_id
+    @api.delete("labels/#{id}")
     expect(@api.status).to eq(ApiSpecHelper::NO_CONTENT_SUCCESS)
     expect(@api.code).to eq(ApiSpecHelper::NO_CONTENT_SUCCESS)
     expect(@api.message).to eq(ApiSpecHelper::NO_CONTENT)
   end
 
-  xit 'Verifies change labels name.' do
-    @api.patch('labels/Label_4', { "name": 'ALEXANDROSS' })
+  it 'Verifies change labels name.' do
+    id = sample_label_id
+    random_string = SecureRandom.hex
+    @api.patch("labels/#{id}", { "name": "#{random_string}" })
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
   end
 
-  xit 'Verifies update labels.' do
-    @api.put('labels/Label_4', { "id": 'Label_4', "labelListVisibility": 'labelShow', "messageListVisibility": 'show', "name": 'IVAN' })
+  it 'Verifies update labels.' do
+    id = sample_label_id
+    random_string = SecureRandom.hex
+    @api.put("labels/#{id}", { "id": "#{id}", "labelListVisibility": 'labelShow', "messageListVisibility": 'show', "name": "#{random_string}" })
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.message).to eq(ApiSpecHelper::SUCCESS)
