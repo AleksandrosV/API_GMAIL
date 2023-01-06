@@ -1,3 +1,2 @@
 --color
 --format documentation
---format html --out reports/rspec_results.html
