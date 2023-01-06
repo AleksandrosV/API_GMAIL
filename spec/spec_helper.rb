@@ -13,7 +13,6 @@ SimpleCov.start do
 end
 SimpleCov.add_filter ['shared_context']
 
-
 ClientApi.configure do |config|
   env_data = YAML.load_file('config/env.yml')
   config.base_url = env_data[:url]
