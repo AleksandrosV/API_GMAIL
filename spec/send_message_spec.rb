@@ -10,6 +10,7 @@ RSpec.describe 'Sending Message' do
     @mail.subject =  'Api email test'
     @mail.body =     'Hello Alex, This is a test.'
     raw = Base64.urlsafe_encode64 @mail.to_s
+    # Base64-encoded email message
     @api.post('messages/send', { 'raw': raw })
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
     expect(@api.code).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
