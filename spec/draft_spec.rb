@@ -6,10 +6,10 @@ require_relative '../shared_context/api_spec_helper'
 RSpec.describe 'Drafts' do
   include ApiSpecHelper
   it 'Verifies creating draft.' do
-    @mail.from =     'testapiruby@gmail.com'
-    @mail.to =       'testapiruby@gmail.com'
-    @mail.subject =  'Draft test'
-    @mail.body =     'This is a draft.'
+    @mail.from = 'testapiruby@gmail.com'
+    @mail.to = 'testapiruby@gmail.com'
+    @mail.subject = 'Draft test'
+    @mail.body = 'This is a draft.'
     raw = Base64.urlsafe_encode64 @mail.to_s
     @api.post('drafts', { "message": { "raw": raw } })
     expect(@api.status).to eq(ApiSpecHelper::VALID_RESPONSE_CODE)
